@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header id="header">
+        <p>TODO: navigation</p>
+    </header>
+    <main id="main">
+        <h1>{{ title }}</h1>
+        <p>Use the form below to upload a file to the server:</p>
+        <hr>
+        <form action="/" method="post" enctype=multipart/form-data>
+            <input type="file" name="upload" id="upload">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        {{ content|safe }}
+    </main>
+    <footer id="footer">
+        <p>© Martin Janů 2024</p>
+    </footer>
+</body>
+</html>

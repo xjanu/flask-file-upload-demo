@@ -3,7 +3,7 @@
 from flask import Flask, request, render_template
 import os
 
-UPLOAD_FOLDER = 'static'
+UPLOAD_FOLDER = 'static/upload/'
 APP_TITLE = "Flask file upload demo"
 
 app = Flask(__name__)
@@ -16,14 +16,19 @@ def endpoint_post():
     uploaded = None
     if request.files:
         file = request.files['upload']
-        path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+        path = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(path)
-        uploaded = file.filename
+        uploaded = {
+            'name': file.filename,
+            'href': path}
 
     # List all uploaded files
-    all_files = os.listdir(UPLOAD_FOLDER)
-    all_files.sort()
-    print(all_files)
+    all_files = []
+    for file in sorted(os.listdir(UPLOAD_FOLDER)):
+        all_files.append({
+            "name": file,
+            "href": os.path.join(UPLOAD_FOLDER, file)
+        })
 
     return render_template(
         'index.html',

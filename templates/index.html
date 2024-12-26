@@ -18,7 +18,8 @@
         </form>
         {% if uploaded %}
         <hr>
-        <span>Uploaded file: </span><a href="/static/{{ uploaded }}">{{ uploaded }}</a>
+        <span>Uploaded file: </span>
+        <a href="{{ uploaded.href }}">{{ uploaded.name }}</a>
         {% endif %}
         {% if all_files %}
         <hr>
@@ -28,13 +29,13 @@
             {% if file == uploaded %}
             <div class="highlight">
             <li class="highlight">
-                <a href="/static/{{ file }}">{{ file }}</a>
+                <a href="{{ file.href }}">{{ file.name }}</a>
                 <span class="deemphasize">(uploaded)</span>
             </li>
             </div>
             {% else %}
             <li>
-                <a href="/static/{{ file }}">{{ file }}</a>
+                <a href="{{ file.href }}">{{ file.name }}</a>
             </li>
             {% endif %}
             {% endfor %}

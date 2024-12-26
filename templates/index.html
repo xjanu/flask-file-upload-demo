@@ -7,22 +7,42 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <header id="header">
-        <p>TODO: navigation</p>
-    </header>
+    <header id="header"></header>
     <main id="main">
         <h1>{{ title }}</h1>
         <p>Use the form below to upload a file to the server:</p>
-        <hr>
         <form action="/" method="post" enctype=multipart/form-data>
             <input type="file" name="upload" id="upload">
             <br>
             <input type="submit" value="Submit">
         </form>
-        {{ content|safe }}
+        {% if uploaded %}
+        <hr>
+        <span>Uploaded file: </span><a href="/static/{{ uploaded }}">{{ uploaded }}</a>
+        {% endif %}
+        {% if all_files %}
+        <hr>
+        <h2>All files:</h2>
+        <ul>
+            {% for file in all_files %}
+            {% if file == uploaded %}
+            <div class="highlight">
+            <li class="highlight">
+                <a href="/static/{{ file }}">{{ file }}</a>
+                <span class="deemphasize">(uploaded)</span>
+            </li>
+            </div>
+            {% else %}
+            <li>
+                <a href="/static/{{ file }}">{{ file }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
     </main>
     <footer id="footer">
-        <p>© Martin Janů 2024</p>
+        <span>© Martin Janů 2024</span>
     </footer>
 </body>
 </html>

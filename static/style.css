@@ -39,17 +39,57 @@ h1, h2, h3, h4, h5, h6 {
 
 /* END css reset */
 
+/* main page layout */
 html,body {
     width: 100%;
     min-height: 100vh;
 }
 
 body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
 }
 
 #main {
-    width: 100ch;
-    margin: 1em auto;
+    flex-grow: 1;
+    width: min(100ch, 100%);
+    margin: auto;
+    padding: 1.5em 1.5em;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* classes */
+.highlight {
+    background-color: #fff0c0;
+}
+
+.deemphasize {
+    color: #808080;
+}
+
+/* tags */
+body {
+    color: #444;
+    line-height:1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1em;
+    line-height:1.4;
+}
+
+hr {
+    margin: 1em 0em;
+}
+
+ul {
+    padding-left: 0px;
+}
+
+ul ul {
+    padding-left: 40px;
 }

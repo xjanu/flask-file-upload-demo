@@ -6,8 +6,10 @@ import os
 UPLOAD_FOLDER = 'static/upload/'
 APP_TITLE = "Flask file upload demo"
 
+if not os.path.exists(UPLOAD_FOLDER):
+    os.mkdir(UPLOAD_FOLDER)
+
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/', methods=["GET", "POST"])
 def endpoint_post():

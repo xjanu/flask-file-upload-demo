@@ -19,7 +19,7 @@
         {% if uploaded %}
         <hr>
         <span>Uploaded file: </span>
-        <a href="{{ uploaded.href }}">{{ uploaded.name }}</a>
+        <a href="{{ uploaded.href }}" target="_blank">{{ uploaded.name }}</a>
         {% endif %}
         {% if all_files %}
         <hr>
@@ -29,13 +29,13 @@
             {% if file == uploaded %}
             <div class="highlight">
             <li class="highlight">
-                <a href="{{ file.href }}">{{ file.name }}</a>
+                <a href="{{ file.href }}" target="_blank">{{ file.name }}</a>
                 <span class="deemphasize">(uploaded)</span>
             </li>
             </div>
             {% else %}
             <li>
-                <a href="{{ file.href }}">{{ file.name }}</a>
+                <a href="{{ file.href }}" target="_blank">{{ file.name }}</a>
             </li>
             {% endif %}
             {% endfor %}
